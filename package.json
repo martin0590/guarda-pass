@@ -1,0 +1,16 @@
+{
+  "name": "guarda-pass",
+  "version": "1.0.0",
+  "description": "Guarda tus contraseñas de forma facil.",
+  "license": "MIT",
+  "author": "martinm90",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^38.2.2"
+  }
+}
