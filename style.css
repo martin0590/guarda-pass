@@ -1,4 +1,149 @@
+:root {
+  /* CSS HEX */
+--delft-blue: #3a405aff;
+--red-pantone: #e63946ff;
+--platinum: #d8e2dcff;
+--dodger-blue: #1e96fcff;
+--dark-cyan: #3e8989ff;
+
+/* CSS HSL */
+--delft-blue-hsl: hsla(229, 22%, 29%, 1);
+--red-pantone-hsl: hsla(355, 78%, 56%, 1);
+--platinum-hsl: hsla(144, 15%, 87%, 1);
+--dodger-blue-hsl: hsla(208, 97%, 55%, 1);
+--dark-cyan-hsl: hsla(180, 38%, 39%, 1);
+--body-background-color: hsla(231, 21%, 12%, 0.8);
+}
+
 body {
     border: 0;
     padding: 0;
+    height: 100vh;
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--body-background-color);
+}
+
+
+
+#main_container{
+    display: flex;
+
+    gap: 10px;
+    width: 100vw;
+    height: 100vh;
+}
+
+#input_container{
+  padding: 15px;
+  border: 1px solid #ccc;
+  font-family: Arial, sans-serif;
+  height: fit-content;
+}
+
+#input_box{
+  display: flex; 
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#input_search_box {
+  display: flex; 
+  align-items: center;
+  padding-block: 15px;
+  font-family: Arial, sans-serif;
+  height: fit-content;
+  padding-top: 4rem;
+}
+
+/* Set a fixed width for the label */
+#input_box label,
+#input_search_box label{
+  width: 100px;
+  min-width: 100px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+/* Style for all three inputs */
+#input_box input,
+#input_search_box input{
+  flex-grow: 1; 
+  box-sizing: border-box; 
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+}
+
+
+
+.half-screen-div {
+    flex: 1;
+    /* height: 100%;  */
+    color: rgb(230, 230, 230);
+}
+
+#information_container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    margin-bottom: 10px;
+}
+
+#information_container::-webkit-scrollbar {
+  display: none; /* or width: 0; */
+}
+
+#test{
+  display: block;
+}
+
+#field_div {
+    display: flex;
+    gap: 1rem;
+    margin-block: -8px;
+}
+
+#account_div {
+    color: rgb(230, 230, 230);
+    border: 1px solid var(--red-pantone);
+    padding-inline-start: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+#inputs_label{
+    color: rgb(230, 230, 230);
+}
+
+
+/* Button Styles */
+#button_save {
+  width: 100%; /* Makes the button the full width of the container */
+  box-sizing: border-box;
+  padding: 10px;
+  margin-top: 20px; /* Space above the button */
+  background-color: var(--delft-blue); /* A nice blue color */
+  color: white;
+  border: 1px solid rgb(81, 89, 126);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.2s; /* Smooth hover effect */
+}
+
+#button_save:hover {
+  background-color: rgb(81, 89, 126); /* Darker blue on hover */
+}
+
+input:focus {
+  outline-color: var(--red-pantone);
 }

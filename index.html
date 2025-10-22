@@ -12,12 +12,56 @@
       content="default-src 'self'; script-src 'self'"
     />
     <link rel="stylesheet" href="style.css">
-    <title>Hello from Electron renderer</title>
+    <title>Guarda Pass</title>
   </head>
   <body>
-    <h1>Hello from Electron renderer!</h1>
-    <p>👋</p>
-    <p id="info"></p>
+    <main id="main_container">
+
+      <div id="input_container" class="half-screen-div">
+          <div id="input_box">
+            <label for="compania" id="inputs_label">Compania</label>
+            <input type="text" name="compania" id="input_company">
+          </div>
+          <div id="input_box">
+            <label for="usuario" id="inputs_label">Usuario</label>
+            <input type="text" name="usuario" id="input_user">
+          </div>
+          <div id="input_box">
+            <label for="email" id="inputs_label">Email</label>
+            <input type="email" name="email" id="input_email">
+          </div>
+          <div id="input_box">
+            <label for="password" id="inputs_label">Constraseña</label>
+            <input type="text" name="password" id="input_password">
+          </div>
+          <div id="input_box">
+            <label for="cel1" id="inputs_label">Cel 1</label>
+            <input type="number" name="cel1" id="input_cel1">
+          </div>
+          <div id="input_box">
+            <label for="cel2" id="inputs_label">Cel 2</label>
+            <input type="number" name="cel2" id="input_cel2">
+          </div>
+          <div id="input_box">
+            <label for="observacion" id="inputs_label">Observación</label>
+            <input type="text" name="observacion" id="input_observation">
+          </div>
+
+        <button type="button" id="button_save">Guardar Información</button>
+
+        <div id="input_search_box">
+          <label for="buscar" id="inputs_label">Buscar</label>
+          <input type="text" name="buscar" id="input_search">
+          <div>
+            
+          </div>
+        </div>
+        <p id="info"></p>
+      </div>
+
+      <div id="information_container" class="half-screen-div"></div>
+      <!-- <p id="info"></p> -->
+    </main>
   </body>
   <script src="./renderer.js"></script>
 </html>
