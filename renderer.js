@@ -22,19 +22,30 @@ const fetchedInformation = async () => {
 const createCompanyInformationDiv = (arrInfo) => {
   for(let companyObj of arrInfo){
     const accountDiv = document.createElement("div")
+    const span = document.createElement("p")
+    span.id = "open-close"
+    accountDiv.appendChild(span)
     accountDiv.id = "account_div"
+
 
     for(let [key, value] of Object.entries(companyObj)){
       const fieldDiv = document.createElement("div")
       fieldDiv.id = "field_div"
 
-      const accountLabel = document.createElement("p")
-      accountLabel.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: `
-      fieldDiv.appendChild(accountLabel)
+      if(key !== "company"){
+        const accountLabel = document.createElement("p")
+        accountLabel.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: `
+        fieldDiv.appendChild(accountLabel)
+        const accountData = document.createElement("p")
+        accountData.textContent = value
+        fieldDiv.appendChild(accountData)
+      }else{
+        fieldDiv.classList.add("company-name")
+        const accountData = document.createElement("p")
+        accountData.textContent = value.toUpperCase()
+        fieldDiv.appendChild(accountData)
+      }
 
-      const accountData = document.createElement("p")
-      accountData.textContent = value
-      fieldDiv.appendChild(accountData)
 
 
       accountDiv.appendChild(fieldDiv)
@@ -42,8 +53,6 @@ const createCompanyInformationDiv = (arrInfo) => {
     information_container.appendChild(accountDiv)
   }
 }
-
-
 
 const clearInputs = () => {
   input_company.value = ""
@@ -123,8 +132,21 @@ const handleSearchCompany = () => {
 
 }
 
-save_button.addEventListener('click', saveInputsInformation)
-// input_search.addEventListener('input', handleSearchCompany)
 
+save_button.addEventListener('click', saveInputsInformation)
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    if (information_container) {
+        information_container.addEventListener('click', function(event) {
+            const accountSpan = event.target.closest('#open-close');
+            if (accountSpan) {
+                const accountDiv = event.target.closest('#account_div');
+                accountSpan.classList.toggle('open');
+                accountDiv.classList.toggle('open')
+            }
+        });
+    }
+});
 
 fetchedInformation()

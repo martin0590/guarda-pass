@@ -13,6 +13,33 @@ const createWindow = () => {
     }
   })
 
+  const staticTextMenuTemplate = [
+    { role: 'copy', enabled: true }, // The 'copy' role will be enabled manually
+  ];
+
+  const contextMenuTemplate = [
+    { role: 'copy' },
+    { role: 'paste' },
+    { role: 'cut' },
+    { type: 'separator' },
+    { role: 'selectall' }
+  ];
+
+  win.webContents.on('context-menu', (_event, params) => {
+    let menu;
+
+    if (params.isEditable) {
+      menu = Menu.buildFromTemplate(contextMenuTemplate);
+    } else if (params.selectionText && params.selectionText.trim().length > 0) {
+      menu = Menu.buildFromTemplate(staticTextMenuTemplate);
+    } else {
+      return; 
+    }
+    
+    // Popup the menu
+    menu.popup({ window: win, x: params.x, y: params.y });
+  });
+
   Menu.setApplicationMenu(null);
 
   win.loadFile('index.html')

@@ -1,77 +1,72 @@
 :root {
   /* CSS HEX */
---delft-blue: #3a405aff;
---red-pantone: #e63946ff;
---platinum: #d8e2dcff;
---dodger-blue: #1e96fcff;
---dark-cyan: #3e8989ff;
+  --delft-blue: #3a405aff;
+  --red-pantone: #e63946ff;
+  --platinum: #d8e2dcff;
+  --dodger-blue: #1e96fcff;
+  --dark-cyan: #3e8989ff;
 
-/* CSS HSL */
---delft-blue-hsl: hsla(229, 22%, 29%, 1);
---red-pantone-hsl: hsla(355, 78%, 56%, 1);
---platinum-hsl: hsla(144, 15%, 87%, 1);
---dodger-blue-hsl: hsla(208, 97%, 55%, 1);
---dark-cyan-hsl: hsla(180, 38%, 39%, 1);
---body-background-color: hsla(231, 21%, 12%, 0.8);
+  /* CSS HSL */
+  --delft-blue-hsl: hsla(229, 22%, 29%, 1);
+  --red-pantone-hsl: hsla(355, 78%, 56%, 1);
+  --platinum-hsl: hsla(144, 15%, 87%, 1);
+  --dodger-blue-hsl: hsla(208, 97%, 55%, 1);
+  --dark-cyan-hsl: hsla(180, 38%, 39%, 1);
+  --body-background-color: hsla(231, 21%, 12%, 0.8);
 }
 
 body {
-    border: 0;
-    padding: 0;
-    height: 100vh;
-    overflow-y: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--body-background-color);
+  border: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--body-background-color);
 }
 
-
-
-#main_container{
-    display: flex;
-
-    gap: 10px;
-    width: 100vw;
-    height: 100vh;
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
 }
 
-#input_container{
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#main_container {
+  display: flex;
+
+  gap: 10px;
+  width: 100vw;
+  height: 100vh;
+}
+
+#input_container {
   padding: 15px;
   border: 1px solid #ccc;
   font-family: Arial, sans-serif;
   height: fit-content;
 }
 
-#input_box{
-  display: flex; 
+#input_box {
+  display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-#input_search_box {
-  display: flex; 
-  align-items: center;
-  padding-block: 15px;
-  font-family: Arial, sans-serif;
-  height: fit-content;
-  padding-top: 4rem;
-}
-
-/* Set a fixed width for the label */
-#input_box label,
-#input_search_box label{
+#input_box label {
   width: 100px;
   min-width: 100px;
   margin-right: 10px;
   font-weight: bold;
 }
 
-/* Style for all three inputs */
-#input_box input,
-#input_search_box input{
-  flex-grow: 1; 
-  box-sizing: border-box; 
+#input_box input {
+  flex-grow: 1;
+  box-sizing: border-box;
   padding: 8px;
   border: 1px solid #aaa;
   border-radius: 4px;
@@ -79,69 +74,109 @@ body {
   font-size: 1rem;
 }
 
-
-
 .half-screen-div {
-    flex: 1;
-    /* height: 100%;  */
-    color: rgb(230, 230, 230);
+  flex: 1;
+  color: rgb(230, 230, 230);
 }
 
-#information_container{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    font-family: Arial, sans-serif;
-    margin-bottom: 10px;
+#information_container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+  margin-bottom: 10px;
+  min-height: 100vh;
+  overflow-y: scroll;
+  height: fit-content;
 }
 
-#information_container::-webkit-scrollbar {
-  display: none; /* or width: 0; */
-}
-
-#test{
+#test {
   display: block;
 }
 
 #field_div {
-    display: flex;
-    gap: 1rem;
-    margin-block: -8px;
+  display: flex;
+  gap: 1rem;
+  margin-block: -8px;
 }
 
 #account_div {
-    color: rgb(230, 230, 230);
-    border: 1px solid var(--red-pantone);
-    padding-inline-start: 15px;
-    display: flex;
-    flex-direction: column;
+  color: rgb(230, 230, 230);
+  border: 1px solid var(--red-pantone);
+  padding-inline-start: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 30px;
+  transition: border-color 0.1s ease-in-out;
+  position: relative;
+
+  overflow-y: hidden;
 }
 
-#inputs_label{
-    color: rgb(230, 230, 230);
+#account_div:hover {
+  border-color: var(--platinum);
+
+  .company-name {
+    color: var(--red-pantone);
+  }
+
+  #open-close {
+    color: var(--red-pantone);
+  }
 }
 
+#account_div.open {
+  height: auto;
+}
 
-/* Button Styles */
+.company-name {
+  display: flex;
+  align-self: center;
+  transition: color 0.1s ease-in-out;
+}
+
+#open-close {
+  position: absolute;
+  left: 0%;
+  width: 100%;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  padding-block: 6px;
+}
+
+#open-close::before {
+  content: "+";
+  display: inline-block;
+  margin-left: 8px;
+  font-weight: bold;
+  transition: color 0.1s ease-in-out;
+}
+
+#open-close.open::before {
+  content: "-";
+}
+
+#inputs_label {
+  color: rgb(230, 230, 230);
+}
+
 #button_save {
-  width: 100%; /* Makes the button the full width of the container */
+  width: 100%;
   box-sizing: border-box;
   padding: 10px;
-  margin-top: 20px; /* Space above the button */
-  background-color: var(--delft-blue); /* A nice blue color */
+  margin-top: 20px;
+  background-color: var(--delft-blue);
   color: white;
   border: 1px solid rgb(81, 89, 126);
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.2s; /* Smooth hover effect */
+  transition: background-color 0.2s;
 }
 
 #button_save:hover {
-  background-color: rgb(81, 89, 126); /* Darker blue on hover */
+  background-color: rgb(81, 89, 126);
 }
 
 input:focus {
